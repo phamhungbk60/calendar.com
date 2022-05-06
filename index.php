@@ -14,4 +14,3 @@ if(!authenticate($client)) return;
 $logic = new Logic($client);
 $presenter = new Presenter($logic); 
 (new Router($presenter))->doUserAction();
-  

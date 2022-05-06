@@ -59,4 +59,3 @@ function getEvent($client, $eventID) {
 	return createCalendar($client)->events->listEvents(htmlspecialchars($eventID));
 }
 
-?>
