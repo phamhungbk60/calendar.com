@@ -25,7 +25,10 @@ class Presenter {
 	}
 
 	function printEventDetails() {
-		$this->putEvent($this->businessLogic->getEventById($_GET['showThisEvent'], $_GET['calendarId']));
+		$this->putEvent(
+			$this->businessLogic->getEventById(
+				$_GET['showThisEvent'], 
+				$_GET['calendarId']));
 	}
 
 	function putHome() {
@@ -83,5 +86,3 @@ class Presenter {
 		print('<div display="block">' . $text . '</div>');
 	}
 }
-
-?>

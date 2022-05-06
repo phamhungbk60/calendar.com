@@ -1,5 +1,5 @@
 <?php
-
+// Login - Logout - Authentication
 function authenticate(&$client) {
 	if (isset($_GET['logout'])) {
 		unset($_SESSION['token']);
@@ -18,8 +18,9 @@ function authenticate(&$client) {
 	return isAuthenticated($client);
 }
 
+// Register new calendar API
 function createCalendar(&$client) {
-	return new Google_CalendarService($client);
+	return new Google_Service_Calendar($client);
 }
 
 function isAuthenticated(Google_Client &$client) {
@@ -30,8 +31,9 @@ function isAuthenticated(Google_Client &$client) {
 	}
 
 	$authUrl = $client->createAuthUrl();
-	print "<a class='login' href='$authUrl'>Connect Me!</a>";
+	print "<a class='login' href='$authUrl' style='font-size:24px'>Connection With Google Account At Here</a>";
 }
+
 
 function listAllCalendars(Google_Client &$client) {
 	if (!isAuthenticated($client))
@@ -54,7 +56,7 @@ function getEventList($client, $calendarId) {
 }
 
 function getEvent($client, $eventID) {
-	return createCalendar($client)->events->listEvents(htmlspecialchars($calendarId));
+	return createCalendar($client)->events->listEvents(htmlspecialchars($eventID));
 }
 
 ?>
