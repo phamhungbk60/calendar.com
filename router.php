@@ -10,9 +10,26 @@ class Router {
 
 	function doUserAction() {
 		$this->presenter->putMenu();
-		if (!isset($_GET['action']))
-			return;
-		$this->presenter->$_GET['action']();
-	}
+		switch ($_GET['action']) {
+			case 'putHome':
+				$this->presenter->putHome();
+				break;
 
+			case 'printCalendars':
+				$this->presenter->printCalendars();
+				break;
+
+			case 'printCalendarContents':
+				$this->presenter->printCalendarContents();
+				break;
+
+			case 'printEventDetails':
+				$this->presenter->printEventDetails();
+				break;
+			
+			default:
+				$this->presenter->printCalendarContents();
+				break;
+		}
+	}
 }
